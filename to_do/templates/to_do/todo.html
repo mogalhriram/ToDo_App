@@ -1,29 +1,24 @@
-{%extends 'main.html'%}
-{%block content%}
+{%extends 'main.html'%} {%block content%}
+<div style="margin-left: 20px;">
 <h3>ToDo</h3>
 <h4>Title : {{todo.title}}</h4>
 <h5>Deadline : {{todo.deadline}}</h5>
-<h5>Status :
-    {%if todo.completed == 'True' %}
-    Completed
-    {%else%}
-    To Be Completed
-    {%endif%}
+<h5>
+  Status : {%if todo.completed == 'True' %} Completed {%else%} To Be Completed
+  {%endif%}
 </h5>
 
 <p>
-<Small>
-    <a href="{%url 'update-todo' todo.id%}">update</a>
-</Small>
-|
-<Small>
-    <a href="{%url 'delete-todo' todo.id%}">delete</a>
-</Small>
+  <small>
+    <button class="btn btn-info"><a href="{%url 'update-todo' todo.id%}" style="color: white;">update</a> </button>
+  </small>
+  <small>
+    <button class="btn btn-danger"><a href="{%url 'delete-todo' todo.id%}" style="color: white;">delete</a> </button>
+  </small>
 </p>
-<hr>
-Description
-<p>
-    {{todo.description}}
-</p>
+<hr />
+<strong>Description</strong>
+<p>{{todo.description}}</p>
+</div>
 
 {%endblock content%}

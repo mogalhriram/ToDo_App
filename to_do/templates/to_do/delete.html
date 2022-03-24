@@ -1,11 +1,11 @@
-{%extends 'main.html'%}
-{%block content%}
+{%extends 'main.html'%} {%block content%}
+<p></p>
 <form action="" method="POST">
-    {%csrf_token%}
-    <p>
+  {%csrf_token%}
+  <p>
     Are You sure you want to delete?
-    <input type="submit" value="Delete">
-    </p>
+    <input class="btn btn-danger" type="submit" value="Delete" />
+  </p>
 </form>
-<button onclick="history.back()">Go Back</button>
+<button class="btn btn-success" onclick="history.back()">Go Back</button>
 {%endblock content%}

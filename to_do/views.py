@@ -1,4 +1,5 @@
 
+from unittest import result
 from django.shortcuts import redirect, render
 
 from .models import ToDo
@@ -56,7 +57,11 @@ def login_user(request):
 @login_required(login_url="login")
 def home(request):
     todos = ToDo.objects.all()
-    context = {'todos': todos}
+    results = []
+    for todo in todos:
+        if todo.owner == request.user:
+            results.append(todo)
+    context = {'todos': results}
     return render(request,'to_do/home.html', context)
 
 @login_required(login_url="login")
@@ -66,7 +71,9 @@ def add_todo(request):
     if request.method == 'POST':
         form = ToDoForm(request.POST)
         if form.is_valid:
-            form.save()
+            user = form.save(commit=False)
+            user.owner = request.user
+            user.save()
             return redirect('home') 
     return render(request, 'to_do/form.html', context)
 
