@@ -1,5 +1,5 @@
 # ToDo_App
-A Full Stack Web Based ToDo Application. Where user can make theire ToDo Plan. 
+A Full Stack Web-Based ToDo Application. Where users can make their ToDo Plan.
 # Technology Stack
 - Python
 - Django
